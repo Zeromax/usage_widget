@@ -165,7 +165,7 @@ class UsageWidget extends \Widget
 		}
 
 		$objTemplate = new \BackendTemplate($this->strWidgetTemplate);
-		$objTemplate->type = $this->type ? $this->type : $arrAttributes['type'];
+		$objTemplate->type = $this->type;
 		$objTemplate->isAjaxRequest = \Environment::get('isAjaxRequest');
 		$objTemplate->name = $this->strName;
 		$objTemplate->id = $this->strId;

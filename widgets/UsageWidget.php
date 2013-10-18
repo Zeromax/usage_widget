@@ -164,9 +164,6 @@ class UsageWidget extends \Widget
 			}
 		}
 
-		// Load the fonts for the drag hint (see #4838)
-		$GLOBALS['TL_CONFIG']['loadGoogleFonts'] = true;
-
 		$objTemplate = new \BackendTemplate($this->strWidgetTemplate);
 		$objTemplate->type = $this->type ? $this->type : $arrAttributes['type'];
 		$objTemplate->isAjaxRequest = \Environment::get('isAjaxRequest');

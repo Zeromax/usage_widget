@@ -157,6 +157,7 @@ class UsageWidget extends \Widget
 					for ($i = 0; $i < count($v->labelValue); $i++)
 					{
 						$arrLabelValue[] = $obj->{$v->labelValue[$i]};
+						$objClass->{$v->labelValue[$i]} = $obj->{$v->labelValue[$i]};
 					}
 					$objClass->label = vsprintf($v->label, $arrLabelValue);
 					$arrValues[$obj->id] = $objClass;

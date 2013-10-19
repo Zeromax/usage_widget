@@ -29,7 +29,8 @@ $GLOBALS['TL_DCA']['tl_files']['fields']['fileUsage'] = array
 				'label'			=> 'Content Element ID%s',
 				'labelValue'	=> array('id', 'id'),
 				'column'		=> array('singleSRC=?'),
-				'value'			=> array(\FilesModel::findMultipleByPaths(array(\Input::get('id')))->id)
+				'value'			=> array(\FilesModel::findMultipleByPaths(array(\Input::get('id')))->id),
+				'do'			=> 'article'
 			),
 //			array
 //			(

@@ -96,6 +96,7 @@ class UsageWidget extends \Widget
 				$model->labelValue = $v['labelValue'];
 				$model->column = $v['column'];
 				$model->value = $v['value'];
+				$model->do = $v['do'];
 			}
 			$arrModel[] = $model;
 		}
@@ -160,6 +161,8 @@ class UsageWidget extends \Widget
 						$objClass->{$v->labelValue[$i]} = $obj->{$v->labelValue[$i]};
 					}
 					$objClass->label = vsprintf($v->label, $arrLabelValue);
+					$objClass->table = $v->table;
+					$objClass->do = $v->do;
 					$arrValues[$obj->id] = $objClass;
 				}
 			}

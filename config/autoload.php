@@ -27,5 +27,6 @@ ClassLoader::addClasses(array
  */
 TemplateLoader::addFiles(array
 (
-	'be_usage_widget'				=> 'system/modules/usage_widget/templates'
+	'be_usage_widget'				=> 'system/modules/usage_widget/templates',
+	'be_usage_widget_files'			=> 'system/modules/usage_widget/templates'
 ));

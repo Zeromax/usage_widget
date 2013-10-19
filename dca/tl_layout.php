@@ -24,9 +24,10 @@ $GLOBALS['TL_DCA']['tl_layout']['fields']['layoutUsage'] = array
 		'model' => array(array(
 			'table'			=> 'tl_page',
 			'label'			=> '%s (%s' . $GLOBALS['TL_CONFIG']['urlSuffix'] . ')',
-			'labelValue'	=> array('title','alias'),
+			'labelValue'	=> array('title','alias', 'id'),
 			'column'		=> array('layout=? AND includeLayout=1'),
-			'value'			=> array(\Input::get('id'))
+			'value'			=> array(\Input::get('id')),
+			'do'			=> 'page'
 		))
 	),
 	'sql'                   => "blob NULL",

@@ -9,7 +9,11 @@
 		<ul id="sort_<?php echo $this->id;?>" class="<?php echo $this->class;?>">
 
 			<?php foreach ($this->arrValues as $k => $v):?>
-				<li data-id="<?php echo $k;?>"><?php echo $v->icon;?> <?php echo $v->label;?></li>
+				<li data-id="<?php echo $k;?>">
+					<?php echo $v->icon;?> <?php echo $v->label;?>
+					<a href="contao/main.php?do=<?php echo $v->do; ?>&amp;table=<?php echo $v->table; ?>&amp;act=edit&amp;id=<?php echo $v->id; ?>&rt=<?php echo REQUEST_TOKEN; ?>&amp;popup=1" onclick="Backend.getScrollOffset();
+						Backend.openModalusageWidget({'width': 765, 'title': '<?php echo $this->pickerTitle;?>', 'url': this.href, 'id': '<?php echo $this->id;?>', 'type': '<?php echo $this->type;?>'});return false"><?php echo Image::getHtml('edit.gif',$label); ?></a>
+				</li>
 			<?php endforeach;?>
 
 		</ul>

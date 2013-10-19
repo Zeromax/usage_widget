@@ -30,8 +30,7 @@ $GLOBALS['TL_DCA']['tl_layout']['fields']['layoutUsage'] = array
 			'do'			=> 'page'
 		))
 	),
-	'sql'                   => "blob NULL",
-	'relation'              => array('type'=>'hasOne', 'load'=>'lazy')
+	'sql'                   => "blob NULL"
 );
 $GLOBALS['TL_DCA']['tl_layout']['fields']['mobileLayoutUsage'] = array
 (
@@ -47,6 +46,5 @@ $GLOBALS['TL_DCA']['tl_layout']['fields']['mobileLayoutUsage'] = array
 			'value'			=> array(\Input::get('id'))
 		))
 	),
-	'sql'                     => "blob NULL",
-	'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
+	'sql'                     => "blob NULL"
 );

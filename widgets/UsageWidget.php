@@ -76,9 +76,9 @@ class UsageWidget extends \Widget
 		$arrEval = $GLOBALS['TL_DCA'][$this->strTable]['fields'][$this->strField]['eval'];
 
 		// set custom Template
-		if (isset($arrEval['template']) && $arrEval['template'] != "")
+		if (isset($arrEval['widgetTemplate']) && $arrEval['widgetTemplate'] != "")
 		{
-			$this->strWidgetTemplate = $arrEval['template'];
+			$this->strWidgetTemplate = $arrEval['widgetTemplate'];
 		}
 
 		$this->blnIsMultiple = true;

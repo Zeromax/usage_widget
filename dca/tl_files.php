@@ -42,6 +42,44 @@ $GLOBALS['TL_DCA']['tl_files']['fields']['fileUsage'] = array
 				'do'			=> 'article',
 				'multiple'		=> true
 			),
+			array
+			(
+				'table'			=> 'tl_form_field',
+				'label'			=> 'Form Field ID%s',
+				'labelValue'	=> array('id'),
+				'column'		=> array("type='submit' AND imageSubmit=1 AND singleSRC=?"),
+				'value'			=> array(\tl_files_usage::getUsedFileId()),
+				'do'			=> 'form'
+			),
+			array
+			(
+				'table'			=> 'tl_modules',
+				'label'			=> 'Module ID%s',
+				'labelValue'	=> array('id'),
+				'column'		=> array("type='flash' AND source='internal' AND singleSRC=?"),
+				'value'			=> array(\tl_files_usage::getUsedFileId()),
+				'do'			=> 'themes'
+			),
+			array
+			(
+				'table'			=> 'tl_modules',
+				'label'			=> 'Module ID%s',
+				'labelValue'	=> array('id'),
+				'column'		=> array("type='randomImage' AND singleSRC!=''"),
+				'value'			=> array(\tl_files_usage::getUsedFileId()),
+				'do'			=> 'themes',
+				'multiple'		=> true
+			),
+			array
+			(
+				'table'			=> 'tl_news',
+				'label'			=> 'News ID%s',
+				'labelValue'	=> array('id'),
+				'column'		=> array("addImage=1 AND singleSRC=?"),
+				'value'			=> array(\tl_files_usage::getUsedFileId()),
+				'do'			=> 'news',
+				'multiple'		=> true
+			),
 		)
 	),
 	'sql'                   => "blob NULL"

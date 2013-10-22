@@ -97,8 +97,9 @@ class UsageWidget extends \Widget
 				$model->column = $v['column'];
 				$model->value = $v['value'];
 				$model->do = $v['do'];
+				$model->multiple = $v['multiple'] ? true : false;
+				$arrModel[] = $model;
 			}
-			$arrModel[] = $model;
 		}
 		$this->arrModel = $arrModel;
 	}
@@ -151,6 +152,10 @@ class UsageWidget extends \Widget
 			{
 				while ($obj->next())
 				{
+					if ($v->multiple && !in_array($v->value[0], deserialize($obj->multiSRC)))
+					{
+						continue;
+					}
 					$arrSet[] = $obj->id;
 					$objClass = new \stdClass();
 					$objClass->icon = \Image::getHtml($this->getPageStatusIcon($obj));

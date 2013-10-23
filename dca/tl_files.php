@@ -28,19 +28,9 @@ $GLOBALS['TL_DCA']['tl_files']['fields']['fileUsage'] = array
 				'table'			=> 'tl_content',
 				'label'			=> 'Content Element ID%s',
 				'labelValue'	=> array('id'),
-				'column'		=> array("(type='image' AND singleSRC=?) OR (type='download' AND singleSRC=?) OR (type='text' AND addImage=1 AND singleSRC=?) OR (type='accordionSingle' AND addImage=1 AND singleSRC=?) OR (type='hyperlink' AND useImage=1 AND singleSRC=?)"),
+				'column'		=> array("(type='image' AND singleSRC=?) OR (type='download' AND singleSRC=?) OR (type='text' AND addImage=1 AND singleSRC=?) OR (type='accordionSingle' AND addImage=1 AND singleSRC=?) OR (type='hyperlink' AND useImage=1 AND singleSRC=?) OR multiSRC!=''"),
 				'value'			=> array(\tl_files_usage::getUsedFileId(), \tl_files_usage::getUsedFileId(), \tl_files_usage::getUsedFileId(), \tl_files_usage::getUsedFileId(), \tl_files_usage::getUsedFileId()),
 				'do'			=> 'article'
-			),
-			array
-			(
-				'table'			=> 'tl_content',
-				'label'			=> 'Content Element ID%s',
-				'labelValue'	=> array('id'),
-				'column'		=> array("multiSRC!=''"),
-				'value'			=> array(\tl_files_usage::getUsedFileId()),
-				'do'			=> 'article',
-				'multiple'		=> true
 			),
 			array
 			(
@@ -53,22 +43,12 @@ $GLOBALS['TL_DCA']['tl_files']['fields']['fileUsage'] = array
 			),
 			array
 			(
-				'table'			=> 'tl_modules',
+				'table'			=> 'tl_module',
 				'label'			=> 'Module ID%s',
 				'labelValue'	=> array('id'),
-				'column'		=> array("type='flash' AND source='internal' AND singleSRC=?"),
+				'column'		=> array("(tl_module.type='flash' AND source='internal' AND singleSRC=?) OR (tl_module.type='randomImage' AND multiSRC!='')"),
 				'value'			=> array(\tl_files_usage::getUsedFileId()),
 				'do'			=> 'themes'
-			),
-			array
-			(
-				'table'			=> 'tl_modules',
-				'label'			=> 'Module ID%s',
-				'labelValue'	=> array('id'),
-				'column'		=> array("type='randomImage' AND singleSRC!=''"),
-				'value'			=> array(\tl_files_usage::getUsedFileId()),
-				'do'			=> 'themes',
-				'multiple'		=> true
 			),
 			array
 			(

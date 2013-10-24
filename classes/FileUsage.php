@@ -34,10 +34,14 @@ class FileUsage extends \Backend
 	static function getUsedFileId()
 	{
 		$return = 0;
-		$objFile = \FilesModel::findMultipleByPaths(array(\Input::get('id')));
-		if ($objFile && $objFile->id > 0)
+		// check if id is empty see #1 - thx to @MrSmile988
+		if (\Input::get('id') != "")
 		{
-			$return = $objFile->id;
+			$objFile = \FilesModel::findMultipleByPaths(array(\Input::get('id')));
+			if ($objFile && $objFile->id > 0)
+			{
+				$return = $objFile->id;
+			}
 		}
 		return $return;
 	}

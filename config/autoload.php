@@ -17,6 +17,7 @@ ClassLoader::addClasses(array
 (
 	// Classes
 	'Contao\AjaxUsageWidget'		=> 'system/modules/usage_widget/classes/AjaxUsageWidget.php',
+	'Contao\FileUsage'				=> 'system/modules/usage_widget/classes/FileUsage.php',
 
 	// Widgets
 	'Contao\UsageWidget'			=> 'system/modules/usage_widget/widgets/UsageWidget.php',

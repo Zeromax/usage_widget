@@ -29,7 +29,7 @@ $GLOBALS['TL_DCA']['tl_files']['fields']['fileUsage'] = array
 				'label'			=> 'Content Element ID%s',
 				'labelValue'	=> array('id'),
 				'column'		=> array("(type='image' AND singleSRC=?) OR (type='download' AND singleSRC=?) OR (type='text' AND addImage=1 AND singleSRC=?) OR (type='accordionSingle' AND addImage=1 AND singleSRC=?) OR (type='hyperlink' AND useImage=1 AND singleSRC=?) OR multiSRC!=''"),
-				'value'			=> array(\tl_files_usage::getUsedFileId(), \tl_files_usage::getUsedFileId(), \tl_files_usage::getUsedFileId(), \tl_files_usage::getUsedFileId(), \tl_files_usage::getUsedFileId()),
+				'value'			=> array(\FileUsage::getUsedFileId(), \FileUsage::getUsedFileId(), \FileUsage::getUsedFileId(), \FileUsage::getUsedFileId(), \FileUsage::getUsedFileId()),
 				'do'			=> 'article'
 			),
 			array
@@ -38,7 +38,7 @@ $GLOBALS['TL_DCA']['tl_files']['fields']['fileUsage'] = array
 				'label'			=> 'Form Field ID%s',
 				'labelValue'	=> array('id'),
 				'column'		=> array("type='submit' AND imageSubmit=1 AND singleSRC=?"),
-				'value'			=> array(\tl_files_usage::getUsedFileId()),
+				'value'			=> array(\FileUsage::getUsedFileId()),
 				'do'			=> 'form'
 			),
 			array
@@ -47,7 +47,7 @@ $GLOBALS['TL_DCA']['tl_files']['fields']['fileUsage'] = array
 				'label'			=> 'Module ID%s',
 				'labelValue'	=> array('id'),
 				'column'		=> array("(tl_module.type='flash' AND source='internal' AND singleSRC=?) OR (tl_module.type='randomImage' AND multiSRC!='')"),
-				'value'			=> array(\tl_files_usage::getUsedFileId()),
+				'value'			=> array(\FileUsage::getUsedFileId()),
 				'do'			=> 'themes'
 			),
 			array
@@ -56,7 +56,7 @@ $GLOBALS['TL_DCA']['tl_files']['fields']['fileUsage'] = array
 				'label'			=> 'News ID%s',
 				'labelValue'	=> array('id'),
 				'column'		=> array("addImage=1 AND singleSRC=?"),
-				'value'			=> array(\tl_files_usage::getUsedFileId()),
+				'value'			=> array(\FileUsage::getUsedFileId()),
 				'do'			=> 'news',
 				'multiple'		=> true
 			),
@@ -64,31 +64,3 @@ $GLOBALS['TL_DCA']['tl_files']['fields']['fileUsage'] = array
 	),
 	'sql'                   => "blob NULL"
 );
-
-/**
- * Class tl_files_usage
- *
- * Provide methods to manipulate the DCA.
- * @package   usage_widget
- * @author    Andreas Nölke
- * @copyright brothers-project 2013
- */
-class tl_files_usage extends tl_files
-{
-
-	/**
-	 * Return the File ID
-	 * @return int
-	 */
-	static function getUsedFileId()
-	{
-		$return = 0;
-		$objFile = \FilesModel::findMultipleByPaths(array(\Input::get('id')));
-		if ($objFile && $objFile->id > 0)
-		{
-			$return = $objFile->id;
-		}
-		return $return;
-	}
-
-}

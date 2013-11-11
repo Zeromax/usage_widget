@@ -95,7 +95,15 @@ class UsageWidget extends \Widget
 				$model->label = $v['label'];
 				$model->labelValue = $v['labelValue'];
 				$model->column = $v['column'];
-				$model->value = $v['value'];
+				if(\Input::get('act') == 'editAll')
+				{
+					$arrId = explode('_', $this->strId);
+					$model->value = end($arrId);
+				}
+				else
+				{
+					$model->value = $v['value'];
+				}
 				$model->do = $v['do'];
 				$arrModel[] = $model;
 			}

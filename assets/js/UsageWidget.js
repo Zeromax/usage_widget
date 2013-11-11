@@ -38,7 +38,7 @@ Backend.openModalusageWidget = function(options) {
 					AjaxRequest.hideBox();
 					window.fireEvent('ajax_change');
 				}
-			}).post({'action': 'reloadWidget', 'name': opt.id, 'value': $('ctrl_' + opt.id).value, 'widget': opt.type, 'REQUEST_TOKEN': Contao.request_token});
+			}).post({'action': 'reloadWidget', 'name': opt.name, 'field': opt.field, 'value': $('ctrl_' + opt.id).value, 'widget': opt.type, 'REQUEST_TOKEN': Contao.request_token});
 		}
 	});
 	M.show({

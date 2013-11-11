@@ -100,6 +100,10 @@ class UsageWidget extends \Widget
 					$arrId = explode('_', $this->strId);
 					$model->value = end($arrId);
 				}
+				else if(\Input::post('action') == 'reloadWidget')
+				{
+					$model->value = $arrAttributes['value'];
+				}
 				else
 				{
 					$model->value = $v['value'];

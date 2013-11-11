@@ -35,10 +35,10 @@ class AjaxUsageWidget extends \Backend
 			$arrAttribs = $GLOBALS['TL_DCA'][$dc->table]['fields'][\Input::post('name')]['eval'];
 
 			$arrAttribs['id'] = \Input::post('name');
-			$arrAttribs['name'] = \Input::post('name');
+			$arrAttribs['strName'] = \Input::post('name');
 			$arrAttribs['value'] = \Input::post('value');
 			$arrAttribs['strTable'] = $dc->table;
-			$arrAttribs['strField'] = \Input::post('name');
+			$arrAttribs['strField'] = \Input::post('field');
 			$arrAttribs['type'] = \Input::post('widget');
 
 			$widget = \Input::post('widget');

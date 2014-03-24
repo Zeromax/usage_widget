@@ -38,7 +38,15 @@ class FileUsage extends \Backend
 		if (\Input::get('id') != "")
 		{
 			$objFile = \FilesModel::findMultipleByPaths(array(\Input::get('id')));
-			if ($objFile && $objFile->id > 0)
+			if ($objFile === null)
+			{
+				return $return;
+			}
+			if (version_compare(VERSION, '3.2', '>='))
+			{
+				$return = $objFile->uuid;
+			}
+			else
 			{
 				$return = $objFile->id;
 			}

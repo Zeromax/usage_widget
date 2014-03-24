@@ -1,0 +1,15 @@
+<?xml version="1.0" ?><xliff version="1.1">
+	<file datatype="php" original="system/modules/usage_widget/languages/en/tl_module.php" source-language="en">
+		<body>
+			<trans-unit id="tl_module.usage_legend">
+				<source>Module usage overview</source>
+			</trans-unit>
+			<trans-unit id="tl_module.moduleUsage.0">
+				<source>Module usage</source>
+			</trans-unit>
+			<trans-unit id="tl_module.moduleUsage.1">
+				<source>You can see an overview of the module usage in Content-Elements and Layouts.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -159,23 +159,45 @@ class UsageWidget extends \Widget
 			{
 				while ($obj->next())
 				{
-					if ($obj->multiSRC != "" && !in_array($v->value[0], deserialize($obj->multiSRC)))
+					$current = $obj->current();
+					if ($current->multiSRC != "" && !in_array($v->value[0], deserialize($current->multiSRC)))
 					{
 						continue;
 					}
-					$arrSet[] = $obj->id;
+					$modFound = false;
+					if ($current->modules != "")
+					{
+						$mod = deserialize($current->modules);
+						if (is_array($mod))
+						{
+							foreach ($mod as $module)
+							{
+								if ($module['mod'] == $v->value[0])
+								{
+									$modFound = true;
+									break;
+								}
+							}
+						}
+						if (!$modFound)
+						{
+							continue;
+						}
+					}
+					
+					$arrSet[] = $current->id;
 					$objClass = new \stdClass();
-					$objClass->icon = \Image::getHtml($this->getPageStatusIcon($obj));
+					$objClass->icon = \Image::getHtml($this->getPageStatusIcon($current));
 					$arrLabelValue = array();
 					for ($i = 0; $i < count($v->labelValue); $i++)
 					{
-						$arrLabelValue[] = $obj->{$v->labelValue[$i]};
-						$objClass->{$v->labelValue[$i]} = $obj->{$v->labelValue[$i]};
+						$arrLabelValue[] = $current->{$v->labelValue[$i]};
+						$objClass->{$v->labelValue[$i]} = $current->{$v->labelValue[$i]};
 					}
 					$objClass->label = vsprintf($v->label, $arrLabelValue);
 					$objClass->table = $v->table;
 					$objClass->do = $v->do;
-					$arrValues[$obj->id] = $objClass;
+					$arrValues[$current->id] = $objClass;
 				}
 			}
 		}

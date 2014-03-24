@@ -95,14 +95,10 @@ class UsageWidget extends \Widget
 				$model->label = $v['label'];
 				$model->labelValue = $v['labelValue'];
 				$model->column = $v['column'];
-				if(\Input::get('act') == 'editAll')
+				if (\Input::get('act') == 'editAll')
 				{
 					$arrId = explode('_', $this->strId);
 					$model->value = end($arrId);
-				}
-				else if(\Input::post('action') == 'reloadWidget')
-				{
-					$model->value = $arrAttributes['value'];
 				}
 				else
 				{

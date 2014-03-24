@@ -13,7 +13,7 @@
 * Open usage wizard in a modal window
 * @param object
 */
-Backend.openModalusageWidget = function(options) {
+Backend.openModalUsageWidget = function(options) {
 	var opt = options || {};
 	var max = (window.getSize().y - 180).toInt();
 	if (!opt.height || opt.height > max)
